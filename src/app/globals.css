@@ -2,11 +2,9 @@
 @import "bootstrap-icons";
 
 :root {
-  --bgColor: #125849;
-  --lightColor: #80df98;
-  --hoverColor: #c50f64;
-  --softColor: #dcd9eb;
-  --textColor: #cdd0df;
+  --bgColor: #075c49;
+  --lightColor: #14ce99;
+  --softColor: #097053;
 }
 
 /*--------------------------------------------------------------
@@ -38,7 +36,7 @@ body {
 
 
 .navbar-toggler-icon{
-  color: white;
+  color: rgb(71, 180, 199);
 }
 .navbar a,
 .navbar a:focus {
@@ -90,7 +88,7 @@ body {
   margin: 0;
   font-size: 80px;
   font-weight: 900;
-  color: var(--lightColor);
+  color: var(--warningColor);
 }
 
 .mainPage .king h2 {
@@ -100,13 +98,13 @@ body {
   font-weight: 600;
 }
 .mainPage .king p {
-  color: var(--lightColor);
+  color: var(--lightgColor);
   margin: 20px 0 0 0;
   font-size: 20px;
 }
 
 .mainPage .uper .img-head {
-  color: var(--lightColor);
+  color: var(--lightgColor);
   font-size: 26px;
 }
 
@@ -118,7 +116,7 @@ body {
   transition: 0.5s;
   color: var(--lightColor);
   background: linear-gradient(var(--testColor), var(--softColor));
-  box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
+  box-shadow: 0px 5px 30px rgba(3, 41, 31, 0.4);
 }
 
 .img-fluid{
@@ -246,7 +244,7 @@ body {
 .sectionTitle h3 {
   margin-right: 10px;
   font-weight: bold;
-  color: #d7e6e4;
+  color: #1ccfb7;
 }
 
 .sectionTitle h4 {
