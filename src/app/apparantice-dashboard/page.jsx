@@ -211,17 +211,6 @@ export default function ApprenticeDashboard() {
                   </span>
                 )}
               </li>
-
-              <li
-                className={`nav-link text-white rounded ${
-                  activeView === "Courses" ? "bg-primary fw-bold" : ""
-                }`}
-                onClick={() => setActiveView("Courses")}
-                style={{ cursor: "pointer" }}
-              >
-                <i className="bi bi-book me-2"></i>
-                Courses / Projects
-              </li>
             </ul>
 
             <div className="mt-auto pt-4 border-top border-secondary">
