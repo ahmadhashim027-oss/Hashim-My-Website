@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
+<<<<<<< HEAD
 import { connectDB } from "@/lib/mongodb";
 import Apprentice from "@/models/Apprentice";
 import cloudinary from "@/lib/cloudinary";
+=======
+import Apprentice from "@/models/Apprentice";
+import { connectDB } from "@/config/db";
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
 
 export async function POST(req) {
   try {
@@ -34,6 +39,7 @@ export async function POST(req) {
 
       const uploadResult = await new Promise((resolve, reject) => {
         cloudinary.uploader
+<<<<<<< HEAD
           .upload_stream(
             { folder: "apprentice_passports" },
             (err, result) => {
@@ -41,6 +47,12 @@ export async function POST(req) {
               else resolve(result);
             }
           )
+=======
+          .upload_stream({ folder: "apprentice_passports" }, (err, result) => {
+            if (err) reject(err);
+            else resolve(result);
+          })
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
           .end(buffer);
       });
 
@@ -65,6 +77,7 @@ export async function POST(req) {
       },
     });
 
+<<<<<<< HEAD
     return NextResponse.json({ message: "Apprentice registered successfully!" });
 
   } catch (error) {
@@ -73,5 +86,13 @@ export async function POST(req) {
       { error: "Registration failed" },
       { status: 500 }
     );
+=======
+    return NextResponse.json({
+      message: "Apprentice registered successfully!",
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    return NextResponse.json({ error: "Registration failed" }, { status: 500 });
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
   }
 }

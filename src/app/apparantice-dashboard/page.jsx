@@ -16,13 +16,21 @@ export default function ApprenticeDashboard() {
   // 🚪 Logout
   const handleLogout = () => {
     localStorage.removeItem("apprenticeData");
+<<<<<<< HEAD
     router.replace("/apparentice-login");
+=======
+    router.replace("/");
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
   };
 
   // Calculate pending tasks count safely using useMemo
   const pendingTasksCount = useMemo(() => {
     if (!apprentice || !Array.isArray(apprentice.tasks)) return 0;
+<<<<<<< HEAD
     return apprentice.tasks.filter(t => t.status !== 'completed').length;
+=======
+    return apprentice.tasks.filter((t) => t.status !== "completed").length;
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
   }, [apprentice]);
 
   useEffect(() => {
@@ -41,7 +49,13 @@ export default function ApprenticeDashboard() {
 
         if (!res.ok) {
           const errorData = await res.json().catch(() => ({}));
+<<<<<<< HEAD
           throw new Error(errorData.message || `Failed to fetch apprentice: ${res.status}`);
+=======
+          throw new Error(
+            errorData.message || `Failed to fetch apprentice: ${res.status}`
+          );
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
         }
 
         const data = await res.json();
@@ -57,7 +71,13 @@ export default function ApprenticeDashboard() {
         }
 
         if (!updatedApprentice.approved) {
+<<<<<<< HEAD
           setError("Your skill selection is pending admin approval. Please check back later.");
+=======
+          setError(
+            "Your skill selection is pending admin approval. Please check back later."
+          );
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
           return;
         }
 
@@ -83,11 +103,25 @@ export default function ApprenticeDashboard() {
     return (
       <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
         <div className="text-center">
+<<<<<<< HEAD
           <div className="spinner-border text-primary mb-3" style={{ width: '3rem', height: '3rem' }} role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
           <h5>Loading your dashboard...</h5>
           <p className="text-muted">Please wait while we fetch your information</p>
+=======
+          <div
+            className="spinner-border text-primary mb-3"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <h5>Loading your dashboard...</h5>
+          <p className="text-muted">
+            Please wait while we fetch your information
+          </p>
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
         </div>
       </div>
     );
@@ -98,7 +132,11 @@ export default function ApprenticeDashboard() {
     return (
       <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
         <div className="text-center">
+<<<<<<< HEAD
           <div className="alert alert-danger" style={{ maxWidth: '500px' }}>
+=======
+          <div className="alert alert-danger" style={{ maxWidth: "500px" }}>
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
             <h5 className="alert-heading">Error</h5>
             <p>{error}</p>
             <hr />
@@ -130,7 +168,11 @@ export default function ApprenticeDashboard() {
     return (
       <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
         <div className="text-center">
+<<<<<<< HEAD
           <div className="alert alert-warning" style={{ maxWidth: '500px' }}>
+=======
+          <div className="alert alert-warning" style={{ maxWidth: "500px" }}>
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
             <h5>Unable to load dashboard</h5>
             <p>No apprentice data available</p>
             <button
@@ -157,15 +199,29 @@ export default function ApprenticeDashboard() {
             <div className="mb-4">
               <h4 className="fw-bold mb-3">Apprentice Panel</h4>
               <div className="d-flex align-items-center mb-3">
+<<<<<<< HEAD
                 <div className="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center me-3" style={{ width: '40px', height: '40px' }}>
+=======
+                <div
+                  className="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center me-3"
+                  style={{ width: "40px", height: "40px" }}
+                >
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                   <i className="bi bi-person-fill"></i>
                 </div>
                 <div>
                   <p className="mb-0 fw-semibold">
+<<<<<<< HEAD
                     {apprentice.fullName?.split(' ')[0] || 'User'}
                   </p>
                   <small className="text-light-emphasis">
                     {apprentice.skill || 'No skill'}
+=======
+                    {apprentice.fullName?.split(" ")[0] || "User"}
+                  </p>
+                  <small className="text-light-emphasis">
+                    {apprentice.skill || "No skill"}
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                   </small>
                 </div>
               </div>
@@ -173,7 +229,13 @@ export default function ApprenticeDashboard() {
 
             <ul className="nav flex-column gap-2 flex-grow-1">
               <li
+<<<<<<< HEAD
                 className={`nav-link text-white rounded ${activeView === "Profile" ? "bg-primary fw-bold" : ""}`}
+=======
+                className={`nav-link text-white rounded ${
+                  activeView === "Profile" ? "bg-primary fw-bold" : ""
+                }`}
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                 onClick={() => setActiveView("Profile")}
                 style={{ cursor: "pointer" }}
               >
@@ -182,11 +244,21 @@ export default function ApprenticeDashboard() {
               </li>
 
               <li
+<<<<<<< HEAD
                 className={`nav-link text-white rounded ${activeView === "Tasks" ? "bg-primary fw-bold" : ""}`}
                 onClick={() => setActiveView("Tasks")}
                 style={{ cursor: "pointer" }}
               >
                 <i className="bi bi-clipboard-check me-2"></i>
+=======
+                className={`nav-link text-white rounded ${
+                  activeView === "Tasks" ? "bg-primary fw-bold" : ""
+                }`}
+                onClick={() => setActiveView("Tasks")}
+                style={{ cursor: "pointer" }}
+              >
+                <i className="bi bi-list-task me-2"></i>
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                 Tasks
                 {pendingTasksCount > 0 && (
                   <span className="badge bg-light text-dark ms-2">
@@ -217,4 +289,8 @@ export default function ApprenticeDashboard() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd

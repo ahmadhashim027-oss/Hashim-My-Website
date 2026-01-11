@@ -94,7 +94,11 @@ export default function ApprenticeLogin() {
 
             <p className="text-center mt-3">
               Don't have an account?{" "}
+<<<<<<< HEAD
               <a href="/aparantice-register" className="text-decoration-none">
+=======
+              <a href="/apprentice-signup" className="text-decoration-none">
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                 Register here
               </a>
             </p>

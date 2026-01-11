@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// Components/AdminComponents/ApparenticeList.js
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -13,7 +17,10 @@ export default function ApparenticeList() {
     dueDate: "",
     adminNotes: ""
   });
+<<<<<<< HEAD
   const [approvingId, setApprovingId] = useState(null);
+=======
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
 
   useEffect(() => {
     fetchApprentices();
@@ -21,6 +28,7 @@ export default function ApparenticeList() {
 
   const fetchApprentices = async () => {
     try {
+<<<<<<< HEAD
       console.log("🔄 Fetching apprentices...");
       // Assuming this is the public signup list endpoint
       const res = await fetch("/api/apprentice/signup");
@@ -40,12 +48,22 @@ export default function ApparenticeList() {
     } catch (error) {
       console.error("❌ Error fetching apprentices:", error);
       alert("Failed to load apprentices. Check console for details.");
+=======
+      const res = await fetch("/api/apprentice/signup");
+      const data = await res.json();
+      if (data.success) {
+        setApprentices(data.apprentices);
+      }
+    } catch (error) {
+      console.error("Error fetching apprentices:", error);
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
     } finally {
       setLoading(false);
     }
   };
 
   const handleApprove = async (id) => {
+<<<<<<< HEAD
     if (!id) {
       alert("❌ No apprentice ID provided");
       return;
@@ -162,15 +180,33 @@ export default function ApparenticeList() {
     } catch (error) {
       console.error("Error rejecting apprentice:", error);
       alert("Failed to reject apprentice");
+=======
+    try {
+      const res = await fetch("/api/admin/apprentice/approve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ apprenticeId: id }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert("Apprentice approved!");
+        fetchApprentices(); // Refresh list
+      }
+    } catch (error) {
+      console.error("Error approving apprentice:", error);
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
     }
   };
 
   const handleOpenAssignTask = (apprentice) => {
+<<<<<<< HEAD
     if (!apprentice.approved) {
       alert("Please approve the apprentice before assigning tasks.");
       return;
     }
 
+=======
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
     setSelectedApprentice(apprentice);
     setTaskForm({
       title: "",
@@ -183,8 +219,11 @@ export default function ApparenticeList() {
 
   const handleAssignTask = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     if (!selectedApprentice) return;
 
+=======
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
     try {
       const res = await fetch("/api/admin/assign-task", {
         method: "POST",
@@ -194,6 +233,7 @@ export default function ApparenticeList() {
           ...taskForm
         }),
       });
+<<<<<<< HEAD
 
       const data = await res.json();
 
@@ -203,6 +243,13 @@ export default function ApparenticeList() {
         fetchApprentices();
       } else {
         alert(`❌ ${data.message || "Failed to assign task"}`);
+=======
+      const data = await res.json();
+      if (data.success) {
+        alert("Task assigned successfully!");
+        setShowAssignTaskModal(false);
+        fetchApprentices(); // Refresh to show new task
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
       }
     } catch (error) {
       console.error("Error assigning task:", error);
@@ -211,6 +258,7 @@ export default function ApparenticeList() {
   };
 
   if (loading) {
+<<<<<<< HEAD
     return (
       <div className="text-center p-5">
         <div className="spinner-border text-primary" role="status">
@@ -238,6 +286,19 @@ export default function ApparenticeList() {
           <i className="bi bi-info-circle me-2"></i>
           No apprentices found.
         </div>
+=======
+    return <div className="text-center p-4">Loading apprentices...</div>;
+  }
+
+  return (
+    <div>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="fw-bold">Apprentice List</h2>
+      </div>
+
+      {apprentices.length === 0 ? (
+        <p>No apprentices found.</p>
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
       ) : (
         <div className="table-responsive">
           <table className="table table-striped table-hover">
@@ -245,7 +306,10 @@ export default function ApparenticeList() {
               <tr>
                 <th>Name</th>
                 <th>Email</th>
+<<<<<<< HEAD
                 <th>Phone</th>
+=======
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                 <th>Skill</th>
                 <th>Status</th>
                 <th>Tasks</th>
@@ -255,6 +319,7 @@ export default function ApparenticeList() {
             <tbody>
               {apprentices.map((apprentice) => (
                 <tr key={apprentice._id}>
+<<<<<<< HEAD
                   <td>
                     <strong>{apprentice.fullName}</strong>
                     <div className="small text-muted">Age: {apprentice.age}</div>
@@ -281,11 +346,26 @@ export default function ApparenticeList() {
                   </td>
                   <td>
                     <span className="badge bg-secondary">
+=======
+                  <td>{apprentice.fullName}</td>
+                  <td>{apprentice.email}</td>
+                  <td>{apprentice.skill || "Not selected"}</td>
+                  <td>
+                    {apprentice.approved ? (
+                      <span className="badge bg-success">Approved</span>
+                    ) : (
+                      <span className="badge bg-warning">Pending</span>
+                    )}
+                  </td>
+                  <td>
+                    <span className="badge bg-info">
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                       {apprentice.tasks?.length || 0} tasks
                     </span>
                   </td>
                   <td>
                     <div className="btn-group" role="group">
+<<<<<<< HEAD
                       {!apprentice.approved ? (
                         <>
                           <button
@@ -321,6 +401,21 @@ export default function ApparenticeList() {
                           title={!apprentice.skill ? "No skill selected by apprentice" : ""}
                         >
                           <i className="bi bi-plus-circle me-1"></i>
+=======
+                      {!apprentice.approved && (
+                        <button
+                          className="btn btn-sm btn-success me-2"
+                          onClick={() => handleApprove(apprentice._id)}
+                        >
+                          Approve
+                        </button>
+                      )}
+                      {apprentice.approved && apprentice.skill && (
+                        <button
+                          className="btn btn-sm btn-primary"
+                          onClick={() => handleOpenAssignTask(apprentice)}
+                        >
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                           Assign Task
                         </button>
                       )}
@@ -333,6 +428,7 @@ export default function ApparenticeList() {
         </div>
       )}
 
+<<<<<<< HEAD
       
       {/* Assign Task Modal */}
       {showAssignTaskModal && selectedApprentice && (
@@ -342,13 +438,25 @@ export default function ApparenticeList() {
               <div className="modal-header">
                 <h5 className="modal-title">
                   <i className="bi bi-plus-circle me-2"></i>
+=======
+      {/* Assign Task Modal */}
+      {showAssignTaskModal && selectedApprentice && (
+        <div className="modal show d-block" tabIndex="-1">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                   Assign Task to {selectedApprentice.fullName}
                 </h5>
                 <button
                   type="button"
                   className="btn-close"
                   onClick={() => setShowAssignTaskModal(false)}
+<<<<<<< HEAD
                   aria-label="Close"
+=======
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                 ></button>
               </div>
               <form onSubmit={handleAssignTask}>
@@ -363,19 +471,27 @@ export default function ApparenticeList() {
                         setTaskForm({ ...taskForm, title: e.target.value })
                       }
                       required
+<<<<<<< HEAD
                       placeholder="e.g., Create login page"
+=======
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                     />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Description *</label>
                     <textarea
                       className="form-control"
+<<<<<<< HEAD
                       rows="4"
+=======
+                      rows="3"
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                       value={taskForm.description}
                       onChange={(e) =>
                         setTaskForm({ ...taskForm, description: e.target.value })
                       }
                       required
+<<<<<<< HEAD
                       placeholder="Detailed description of the task..."
                     />
                   </div>
@@ -409,6 +525,23 @@ export default function ApparenticeList() {
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Admin Notes</label>
+=======
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Due Date (Optional)</label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      value={taskForm.dueDate}
+                      onChange={(e) =>
+                        setTaskForm({ ...taskForm, dueDate: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Admin Notes (Optional)</label>
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                     <textarea
                       className="form-control"
                       rows="2"
@@ -416,9 +549,17 @@ export default function ApparenticeList() {
                       onChange={(e) =>
                         setTaskForm({ ...taskForm, adminNotes: e.target.value })
                       }
+<<<<<<< HEAD
                       placeholder="Optional notes for your reference..."
                     />
                   </div>
+=======
+                    />
+                  </div>
+                  <p className="text-muted">
+                    Skill: {selectedApprentice.skill}
+                  </p>
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                 </div>
                 <div className="modal-footer">
                   <button
@@ -429,7 +570,10 @@ export default function ApparenticeList() {
                     Cancel
                   </button>
                   <button type="submit" className="btn btn-primary">
+<<<<<<< HEAD
                     <i className="bi bi-send me-1"></i>
+=======
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
                     Assign Task
                   </button>
                 </div>

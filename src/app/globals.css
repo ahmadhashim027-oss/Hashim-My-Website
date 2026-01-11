@@ -23,6 +23,30 @@ body {
 }
 
 
+<<<<<<< HEAD
+=======
+.navbar li {
+  position: relative;
+}
+
+
+.navbar-toggler-icon{
+  color: rgb(71, 180, 199);
+}
+.navbar a,
+.navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--lightColor);
+  white-space: nowrap;
+  transition: 0.3s;
+}
+>>>>>>> f97d98ec7c970ca40f958fc6c642dc7f5f2e36bd
 
 .navbar a:hover,
 .navbar .active,
